@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% extends "add_event.html" %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Event</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    {% block adminoperations %}
+    <div class="container">
+        <h1>Delete Event</h1>
+        <form action="/deleting_event" method="POST">
+            <label for="event_id">Event ID:</label>
+            <input type="text" name="event_id" placeholder="Enter Event ID" required><br><br>
+            <input type="submit" class="btn btn-danger" value="Delete Event">
+        </form>
+        {% endblock %}
+    </div>
+</body>
+</html>

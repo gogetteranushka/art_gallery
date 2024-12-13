@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orders</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 18px;
+            text-align: left;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+        th {
+            background-color: #f4f4f4;
+            font-weight: bold;
+        }
+        .container {
+            padding: 20px;
+        }
+        .btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Order Management</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Order ID</th>
+                    <th>Order Date</th>
+                    <th>Product Name</th>
+                    <th>Price</th>
+                    <th>Status</th>
+                    <th>User Email</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for order in orders %}
+                <tr>
+                    <td>{{ order.id }}</td>
+                    <td>{{ order.order_date }}</td>
+                    <td>{{ order.product_name }}</td>
+                    <td>{{ order.price }}</td>
+                    <td>{{ order.status }}</td>
+                    <td>{{ order.user_email }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="/add_order" class="btn">Add New Order</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% extends "add_event.html" %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Artwork</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    {% block adminoperations %}
+    <div class="container">
+        <h1>Delete Artwork</h1>
+        <form action="/deleting_artwork" method="POST">
+            <label for="artwork_id">Artwork ID:</label>
+            <input type="text" name="artwork_id" placeholder="Enter Artwork ID" required><br><br>
+            <input type="submit" class="btn btn-danger" value="Delete Artwork">
+        </form>
+        {% endblock %}
+    </div>
+</body>
+</html>

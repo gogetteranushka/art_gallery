@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+{% extends "add_event.html" %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modify Artist</title>
+</head>
+<body>
+    {% block adminoperations %}
+    <h1>Modify Artist</h1>
+    <form action="/modifying_artist" method="POST">
+        <label for="artist_id">Artist ID:</label>
+        <input type="text" name="artist_id" required><br><br>
+        
+        <label for="artist_name">Artist Name:</label>
+        <input type="text" name="artist_name" required><br><br>
+        
+        <label for="artist_bio">Artist Biography:</label>
+        <textarea name="artist_bio" rows="4" cols="50"></textarea><br><br>
+        
+        <input type="submit" value="Modify Artist">
+    </form>
+    {% endblock %}
+</body>
+</html>

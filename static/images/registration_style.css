@@ -1,0 +1,85 @@
+body {
+    min-height: 100vh; /* Ensure the body takes up the full height of the page */
+    margin: 0; /* Remove any default margin */
+    position: relative; /* Needed for positioning other elements like #nav2 */
+}
+
+/* Navigation Bar Styling */
+nav {
+    display: flex;
+    flex-direction: column; /* Stack the sections vertically */
+    /* padding: 20px; */
+}
+
+/* Top section (Home, About, Contact, etc.) */
+.nav-left {
+    margin-top: 10px;
+    display: flex;
+    justify-content: flex-start; /* Align items to the left */
+    gap: 20px; /* Space between the links */
+    width: 100%;
+}
+
+/* Right section (Register, Log in) */
+.nav-right {
+    margin-top: 10px;
+    display: flex;
+    justify-content: flex-end; /* Align items to the right */
+    gap: 20px; /* Space between the links */
+    width: 100%;
+}
+
+/* Bottom section (Register & Create Account) */
+.nav-bottom {
+    text-align: left;
+    /* margin-top: 20px; Adds space between the navigation and the bottom section */
+    width: 100%;
+}
+
+.nav-bottom h1, .nav-bottom h3 {
+    margin: 5px 0;
+}
+
+/* Link Styling */
+nav a {
+    text-decoration: none;
+    font-size: 16px;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+/* Background Image for Bottom (Nav2) */
+footer {
+    background-image: url('/static/b1.avif');
+    background-size: cover;
+    background-position: center;
+    width: 100%; /* Make sure it spans across the full width */
+    min-height: 30px; Adjust height based on your design
+    /* margin-bottom: 25px; */
+    position: absolute; /* Fix it at the bottom of the body */
+    bottom: 0; /* Stick it to the bottom of the page */
+    left: 0; /* Align it to the left */
+    z-index: -1; /* Ensure it stays in the background, but above the body */
+}
+.nav_first_line{
+    padding: 5px;
+    display: flex;
+    background-image: url('/static/b1.avif');
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    font-size: 30px;
+}
+
+.art_types{
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+}
+
+main{
+    padding: auto;
+}

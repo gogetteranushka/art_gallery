@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% extends "add_event.html" %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modify Artwork</title>
+</head>
+<body>
+    {% block adminoperations %}
+    <h1>Modify Artwork</h1>
+    <form action="/modifying_artwork" method="POST" enctype="multipart/form-data">
+        <label for="artwork_id">Artwork ID:</label>
+        <input type="text" name="artwork_id" required><br><br>
+        
+        <label for="category">Category:</label>
+        <input type="text" name="category"><br><br>
+        
+        <label for="name">Artwork Name:</label>
+        <input type="text" name="name" required><br><br>
+        
+        <label for="artist_name">Artist Name:</label>
+        <input type="text" name="artist_name" required><br><br>
+        
+        <label for="year">Year:</label>
+        <input type="number" name="year"><br><br>
+        
+        <label for="size">Size:</label>
+        <input type="text" name="size"><br><br>
+        
+        <label for="price">Price:</label>
+        <input type="number" name="price"><br><br>
+
+        <label for="description">Description:</label>
+        <textarea name="description" rows="4" cols="50"></textarea><br><br>
+
+        <label for="product_path">Product Image:</label>
+        <input type="file" name="product_path"><br><br>
+        
+        <input type="submit" value="Modify Artwork">
+    </form>
+    {% endblock %}
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+{% extends "admin_dashboard.html" %}
+
+<title>Add Event</title>
+{% block style %}
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f9f9f9;
+    }
+    h1 {
+        text-align: center;
+        color: #333;
+    }
+    form {
+        max-width: 500px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: bold;
+        color: #555;
+    }
+    input, textarea {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+    button {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        background-color: #d25e1f;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+    button:hover {
+        background-color: #0056b3;
+    }
+</style>
+{% endblock %}
+<body>
+    {% block adminoperations %}
+    <h1>Add Event</h1>
+    <form method="POST" action="/adding_events" enctype="multipart/form-data">
+        <label for="name"> Event Name</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="date">Event Date</label>
+        <input type="date" id="date" name="date" required>
+
+        <label for="description">Description</label>
+        <textarea id="description" name="description" rows="4"></textarea>
+
+        <label for="event_img">Add Event Poster</label>
+        <input type="file" name="event_img" required>
+
+        <input type="submit" value="Add Event">
+    </form>
+    {% endblock %}
+</body>
+
