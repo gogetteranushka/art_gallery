@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+{% extends "index.html" %}
+
+{% block sectioncheckout %}
+<style>
+
+    .confirmation-container {
+        width: 80%;
+        margin: 50px auto;
+        padding: 30px;
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+
+    .confirmation-container h3 {
+        font-size: 26px;
+        color: #4CAF50;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+
+    .confirmation-container h2 {
+        font-size: 22px;
+        color: #333;
+        margin-bottom: 30px;
+    }
+
+    .confirmation-container h1 {
+        font-size: 28px;
+        font-weight: bold;
+        color: #008CBA;
+        margin-top: 30px;
+    }
+
+    .confirmation-container a {
+        text-decoration: none;
+        color: #008CBA;
+        font-size: 18px;
+        margin-top: 20px;
+        display: inline-block;
+        transition: color 0.3s ease;
+    }
+
+    .confirmation-container a:hover {
+        color: #005f75;
+    }
+
+    .footer {
+        background-color: #333;
+        color: #fff;
+        padding: 20px;
+        text-align: center;
+        margin-top: 50px;
+    }
+
+    .footer p {
+        margin: 0;
+        font-size: 16px;
+    }
+
+    .social-media {
+        margin-top: 10px;
+    }
+
+    .social-link {
+        color: #fff;
+        margin: 0 10px;
+        text-decoration: none;
+        font-size: 16px;
+        transition: color 0.3s ease;
+    }
+
+    .social-link:hover {
+        color: #f4f7fa;
+    }
+</style>
+
+<div class="confirmation-container">
+    <h3>Your order has been sent for processing.</h3>
+    <h2>You will receive a confirmation mail once the processing has been completed.</h2>
+    <h1>Thank You!</h1>
+    <a href="/home">Go Back to Home</a>
+</div>
+
+<div class="footer">
+    <p>&copy; 2024 Art Gallery. All rights reserved.</p>
+    <div class="social-media">
+        <a href="#" class="social-link">Facebook</a> |
+        <a href="#" class="social-link">Instagram</a> |
+        <a href="#" class="social-link">Twitter</a>
+    </div>
+</div>
+
+{% endblock %}

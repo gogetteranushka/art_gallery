@@ -5,9 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard - Art Gallery</title>
     <link rel="stylesheet" href="static/styles.css">
-  
-  <style>
-        *{
+    
+    <style>
+        
+        * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -16,50 +17,26 @@
         body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f9;
-        }
-
-        header {
-            background-image: url("static/images/magicstudio-art (9).jpg");
-      
-            height: 80px;
-            width: 100%;
-            color: white;
-            padding: 10px;
             display: flex;
-            
-            align-items: center;
-        }
-        header.logo{
-            position: relative;
-            top: -20px;
-            left: -50px;
+            flex-direction: column;
+            height: 100vh;
         }
 
-        header img {
-            height: 50px;
-            margin-right: 10px;
-        }
-
-        header h1 {
-            font-size: 24px;
-        }
-
+        /* Navigation bar */
         nav {
-            background-color: #2c3e50;
+            background-color: #31180b;
             width: 200px;
             height: 100vh;
             padding-top: 20px;
             position: fixed;
-
             top: 0;
         }
 
         nav.logo{
             align-items: center;
             width: 100px;
-        } 
-
         }
+
 
         nav ul {
             list-style: none;
@@ -74,6 +51,8 @@
             color: white;
             text-decoration: none;
             font-size: 18px;
+            display: block;
+            padding: 10px 10px;
         }
 
         nav ul li a:hover {
@@ -107,13 +86,49 @@
             padding-left: 10px;
         }
 
-        main {
-            margin-left: 220px;
-            padding: 20px;
+        /* Header */
+        header {
+            background-image: url("static/images/magicstudio-art (9).jpg");
+            height: 70px;
+            width: calc(100% - 200px); /* Ensure header width is adjusted based on the nav width */
+            margin-left: 200px; /* Make space for the fixed nav */
+            color: white;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            
         }
 
+        header h1 {
+            font-size: 24px;
+        }
+
+        .logout {
+            position: absolute;
+            right: 20px;
+            top: 40px;
+            transform: translateY(-50%);
+        }
+
+        .logout a {
+            background-color: #31180b;
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+
+        /* Main Content */
+        main {
+            margin-left: 200px;
+            padding: 20px;
+            flex-grow: 1; /* Ensure content fills available space */
+        }
+
+        /* Footer */
         footer {
-            background-color: #34495e;
+            background-color: #31180b97;
             color: white;
             text-align: center;
             padding: 10px;
@@ -123,33 +138,26 @@
         }
 
     </style>
-<!--     {% block style %} {% endblock %} -->        
+    {% block style %} {% endblock %}
     <script>
-    
         function toggleDropdown(section) {
             var dropdown = document.getElementById(section);
-            // Toggle visibility of dropdown
             if (dropdown.style.display === "none" || dropdown.style.display === "") {
-                dropdown.style.display = "block";  // Show dropdown
+                dropdown.style.display = "block";
             } else {
-                dropdown.style.display = "none";  // Hide dropdown
+                dropdown.style.display = "none";
             }
         }
-
     </script>
 </head>
 
 <body>
 
-    <header>
-        <div class="logo">
-            <img src="/static/images/logo.jpg" alt="Art Gallery Logo">
-        </div>
-        <h1>Admin Login</h1>
-    </header>
-
+    <!-- Navigation Bar -->
     <nav>
-
+        <div class="logo">
+            <img src="/static/images/logo.jpg" alt="Art Gallery Logo" style="width: 100px;">
+        </div>
         <ul>
             <!-- Artists Section -->
             <li>
@@ -180,18 +188,30 @@
                     <li><a href="/delete_event">Delete Event</a></li>
                 </ul>
             </li>
-
+            <li>
+                <a href="/view_orders">Orders</a>
+            </li>
         </ul>
     </nav>
 
+    <!-- Header -->
+    <header>
+        <h1>Admin Login</h1>
+        <div class="logout">
+            <a href="/logout">Logout</a>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
     <main>
-        <h2>Welcome, Admin</h2><br>
-        <p>Select an action from the sidebar to manage the gallery.</p>
+        {% block adminoperations %}
+        {{ message }}
+        {% endblock %}
     </main>
 
+    <!-- Footer -->
     <footer>
-        <p>&copy; 2024 Art Gallery. All Rights Reserved.</p>
-
+        <p>&copy; 2024 Art Haven. All Rights Reserved.</p>
     </footer>
 
     <script src="static/scripts.js"></script>

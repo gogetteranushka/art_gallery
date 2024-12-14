@@ -100,6 +100,23 @@
         background-color: #005f75;
     }
 </style>
+<script>
+    // alert("Inside")
+    // function confirmation(){
+    //     window.confirm("Are you sure you would like to proceed? Your details will be stored in our database to process the order. If yes, click OK.");  
+        
+    //     }
+
+    function confirmation(event) {
+        var result = confirm("Are you sure you would like to proceed? Your details will be stored in our database to process the order. If yes, click OK.");
+        
+        if (result) {
+            document.getElementById("checkoutForm").submit();  
+        } else {
+            event.preventDefault();
+        }
+    }
+</script>
 
 <div class="cart-container">
     <h3>Your Cart</h3>
@@ -113,24 +130,31 @@
             <p><strong>Category:</strong> {{ res[1] }}</p> <!-- Product Category -->
         </div>
     </div>
-
-    <!-- Table to show product name and price -->
-    <div class="cart-info">
-        <table>
-            <tr>
-                <th>Product Name</th>
-                <th>Price</th>
-            </tr>
-            <tr>
-                <td>{{ res[2] }}</td>
-                <td>₹{{ res[7] }}</td>
-            </tr>
-        </table>
+        <!-- Table to show product name and price -->
+        <form action="/checkout" method="POST">
+            <input type="hidden" name="product_id" value="{{ res[0] }}">
+            <input type="hidden" name="product_name" value="{{ res[2] }}">
+            <input type="hidden" name="price" value="{{ res[7] }}">
+            <div class="cart-info">
+                <table>
+                    <tr>
+                        <th>Product Name</th>
+                        <th>Price</th>
+                    </tr>
+                    <tr>
+                        <td>{{ res[2] }}</td>
+                        <td>₹{{ res[7] }}</td>
+                    </tr>
+                </table>
+            </div>
+            
+        <!-- Buy Now button -->
+            <!-- <button class="buy-now-btn" onclick="window.location.href='/checkout'">Buy Now</button> -->
+            <input type="submit" class="buy-now-btn" value="Buy Now" id="buynow" onclick="confirmation(event);">
+        </form>
     </div>
-
-    <!-- Buy Now button -->
-    <button class="buy-now-btn" onclick="window.location.href='/checkout'">Buy Now</button>
-</div>
+    
+    
 
 {% endblock %}
 

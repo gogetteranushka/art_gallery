@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
     {% extends "add_event.html" %}
@@ -8,13 +9,22 @@
 </head>
 <body>
     {% block adminoperations %}
+
+    <!-- Table for Existing events -->
+    <!-- To be fetched from the database -->
+
     <h1>Modify Event</h1>
-    <form action="/modifying_event" method="POST">
+    <form action="/modifying_event" method="POST" enctype="multipart/form-data">
         <label for="event_id">Event ID:</label>
         <input type="text" name="event_id" required><br><br>
 
         <label for="event_name">Event Name:</label>
-        <input type="text" name="event_name" required><br><br>
+        <select name="event_name" required>
+            <option value="" disabled selected>Select an event</option>
+            {% for event in events %}
+                <option value="{{ event }}">{{ event }}</option>
+            {% endfor %}
+        </select><br><br>
 
         <label for="event_date">Event Date:</label>
         <input type="date" name="event_date" required><br><br>
@@ -28,5 +38,125 @@
         <input type="submit" value="Modify Event">
     </form>
     {% endblock %}
+=======
+<!-- <html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modify Event</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        form {
+            max-width: 500px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #555;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        input[readonly] {
+            background-color: #f0f0f0;
+        }
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <h1>Modify Event</h1>
+    <form method="POST" action="/modify_event">
+        <label for="id">Event ID</label>
+        <input type="text" id="id" name="id" value="{{ event[0] }}" readonly>
+
+        <label for="name">Event Name</label>
+        <input type="text" id="name" name="name" value="{{ event[1] }}" required>
+
+        <label for="date">Event Date</label>
+        <input type="date" id="date" name="date" value="{{ event[2] }}" required>
+
+        <label for="location">Location</label>
+        <input type="text" id="location" name="location" value="{{ event[3] }}" required>
+
+        <label for="description">Description</label>
+        <textarea id="description" name="description" rows="4">{{ event[4] }}</textarea>
+
+        <button type="submit">Modify Event</button>
+    </form>
+</body>
+</html> -->
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modify Event</title>
+</head>
+<body>
+    <h1>Modify Event</h1>
+
+    <form method="POST" action="{{ url_for('modify_event') }}">
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Event ID</th>
+                    <th>Event Name</th>
+                    <th>Event Date</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for event in events %}
+                    <tr>
+                        <form method="POST">
+                            <td>{{ event[0] }}</td> <!-- Assuming the first column is event_id -->
+                            <td>
+                                <input type="text" name="event_name" value="{{ event[1] }}" /> <!-- Assuming second column is event_name -->
+                            </td>
+                            <td>
+                                <input type="date" name="event_date" value="{{ event[2] }}" /> <!-- Assuming third column is event_date -->
+                            </td>
+                            <td>
+                                <input type="hidden" name="event_id" value="{{ event[0] }}" />
+                                <button type="submit">Update</button>
+                            </td>
+                        </form>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </form>
 </body>
 </html>

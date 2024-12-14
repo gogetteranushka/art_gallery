@@ -2,67 +2,162 @@
 {% extends "admin_dashboard.html" %}
 
 <title>Add Event</title>
+
 {% block style %}
 <style>
     body {
-        font-family: Arial, sans-serif;
+        font-family: 'Arial', sans-serif;
         margin: 0;
         padding: 0;
-        background-color: #f9f9f9;
+        background-color: #f4f7f6;
     }
+
     h1 {
         text-align: center;
         color: #333;
+        margin-top: 40px;
+        font-size: 30px;
+        font-weight: 600;
     }
-    form {
-        max-width: 500px;
+
+    /* Style for the table displaying existing events */
+    table {
+        width: 80%;
         margin: 20px auto;
+        border-collapse: collapse;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    table th, table td {
+        padding: 12px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+
+    table th {
+        background-color: #d25e1f;
+        color: white;
+        font-size: 16px;
+    }
+
+    table tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+
+    table tr:hover {
+        background-color: #f1f1f1;
+    }
+
+    /* Style for the add event form */
+    form {
+        max-width: 600px;
+        margin: 40px auto;
         padding: 20px;
         background-color: #fff;
         border-radius: 10px;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
+
+
     label {
         display: block;
-        margin-bottom: 8px;
+        margin-bottom: 10px;
         font-weight: bold;
         color: #555;
+        font-size: 16px;
     }
-    input, textarea {
+
+    input[type="text"], input[type="date"], input[type="file"], textarea {
         width: 100%;
-        padding: 10px;
-        margin-bottom: 15px;
+        padding: 12px;
+        margin-bottom: 20px;
         border: 1px solid #ccc;
-        border-radius: 5px;
+        border-radius: 6px;
+        font-size: 16px;
+        box-sizing: border-box;
     }
-    button {
+
+    textarea {
+        resize: vertical;
+        min-height: 120px;
+    }
+
+    /* Style the submit button */
+    input[type="submit"] {
         display: block;
         width: 100%;
-        padding: 10px;
+        padding: 12px;
         background-color: #d25e1f;
         color: white;
         border: none;
-        border-radius: 5px;
-        font-size: 16px;
+        border-radius: 6px;
+        font-size: 18px;
         cursor: pointer;
+        transition: background-color 0.3s ease;
     }
-    button:hover {
-        background-color: #0056b3;
+
+    input[type="submit"]:hover {
+        background-color: #b1541a;
     }
+
+    /* Media Query for smaller screens */
+    @media (max-width: 768px) {
+        table {
+            width: 90%;
+        }
+
+        form {
+            width: 90%;
+            padding: 15px;
+        }
+
+        input[type="submit"] {
+            font-size: 16px;
+        }
+
+        h1 {
+            font-size: 24px;
+        }
+    }
+
 </style>
 {% endblock %}
+
 <body>
     {% block adminoperations %}
+
+    <h1>Existing Events:</h1>
+    <table>
+        <tr>
+            <th>Event ID</th>
+            <th>Event Name</th>
+            <th>Date</th>
+            <th>Description</th>
+            <th>Image URL</th>
+        </tr>
+        {% for res in res %}
+        <tr>
+            <td>{{res[0]}}</td>
+            <td>{{res[1]}}</td>
+            <td>{{res[2]}}</td>
+            <td>{{res[3]}}</td>
+            <td>{{res[4]}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
     <h1>Add Event</h1>
     <form method="POST" action="/adding_events" enctype="multipart/form-data">
-        <label for="name"> Event Name</label>
+        <label for="name">Event Name</label>
         <input type="text" id="name" name="name" required>
 
         <label for="date">Event Date</label>
         <input type="date" id="date" name="date" required>
 
         <label for="description">Description</label>
-        <textarea id="description" name="description" rows="4"></textarea>
+        <textarea id="description" name="description" rows="4" required></textarea>
 
         <label for="event_img">Add Event Poster</label>
         <input type="file" name="event_img" required>
@@ -71,4 +166,3 @@
     </form>
     {% endblock %}
 </body>
-

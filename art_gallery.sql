@@ -76,5 +76,20 @@ create table registered_users(
 
 select * from registered_users;
 
+drop table later_events;
 
+SELECT * 
+FROM mydb2.events
+WHERE event_date BETWEEN CURRENT_DATE() AND '2025-01-30';
 
+SELECT * 
+FROM mydb2.events
+WHERE event_date>'2025-01-30';
+
+create table customer_query(
+	name varchar(50),
+    email varchar(100),
+    message varchar(500)
+);
+
+SELECT event_name FROM mydb2.events WHERE event_date BETWEEN CURRENT_DATE() AND '2025-01-30';

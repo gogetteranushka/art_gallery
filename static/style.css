@@ -7,6 +7,8 @@
 }
 
 header {
+    /* position: fixed; */
+    /* width: 100%; */
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -206,7 +208,8 @@ h1, p {
     background-color: #333; /* Dark gray background to match the theme */
     color: #ccc; /* Light gray text for readability */
     text-align: center;
-    padding: 40px 0;
+    padding: 10px 20px;
+    /* padding: 40px 0; */
     font-size: 1rem;
     position: relative;
     bottom: 0;

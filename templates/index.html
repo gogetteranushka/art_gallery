@@ -19,6 +19,9 @@
                     <li><a href="/events">Events</a></li>
                     <li><a href="/artwork">Artworks</a></li>
                     <li><a href="/contact">Contact Us</a></li>
+                    {% if 'email' in session %}
+                    <li><a href="/logout">Logout</a></li>
+                    {% endif %}
                 </ul>
             </nav>
             <a class="cta" href="/login"><button>Login</button></a>
@@ -65,8 +68,8 @@
             {% endblock %}
         </div>
 
-        <div class="cart">
-            {% block sectioncart %}
+        <div class="sectioncheckout">
+            {% block sectioncheckout %}
             {% endblock %}
         </div>
     </div>

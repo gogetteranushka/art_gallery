@@ -13,19 +13,474 @@
             .artwork_image:hover{
                 opacity: 0.3;
             }
+            @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+            header{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 30px 10%;
+                
+            }
+            li, a, button{
+                text-decoration: none;
+                font-size: 24px;
+                font-family: "Montserrat", serif;
+                color: rgb(177, 79, 43);
+            }
+            .logo{
+                width: 100px;
+                height: 75px;
+                cursor: pointer;
+                
+            }
+            .nav_links{
+                list-style: none;
+            }
+            .nav_links li{
+                display: inline-block;
+                padding: 0px 20px;
+            }
+            .nav_links li a{
+                transition: all 0.3s ease 0s;
+            }
+            .nav_links li a:hover{
+                background-color: rgb(255, 178, 127, 0.6);
+            }
+            button{
+                padding: 9px 25px;
+                background-color: rgb(249, 163, 106);
+                margin-left: 20px;
+                border: none;
+                cursor: pointer;
+                transition: all 0.3s ease 0s;
+            }
+            button:hover{
+                background-color: rgb(255, 178, 127, 0.6);
+                transform: scale(1.1);
+            }
+
+            .section1{
+                min-height: 50px;
+                background-color: aquamarine;
+            }
+            /* General Reset */
+            body {
+                margin: 0;
+                font-family: Arial, sans-serif;
+                line-height: 1.6;
+                color: #333;
+            }
+
+            .about-section {
+                padding: 50px;
+                background-color: #f9f9f9;
+                text-align: center;
+            }
+
+            .about-section h2 {
+                font-size: 2.5rem;
+                color: #333;
+                margin-bottom: 20px;
+            }
+
+            .about-content {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+                gap: 20px;
+            }
+
+            .about-text {
+                flex: 1;
+                max-width: 500px;
+                font-size: 1.1rem;
+                color: #555;
+                line-height: 1.6;
+                text-align: left;
+            }
+
+            .about-image {
+                flex: 1;
+                max-width: 500px;
+                text-align: center;
+            }
+
+            .about-image img {
+                border-radius: 10px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            }
+            /* Hero Section */
+            .hero {
+                text-align: center;
+                position: relative;
+            }
+
+            .hero img {
+                width: 100%;
+                height:100%;
+            }
+
+            .hero h1 {
+                position: absolute;
+                top: 30%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                color: white;
+                font-size: 3em;
+                text-shadow: 2px 2px 5px #000;
+            }
+
+            .hero p {
+                position: absolute;
+                top: 45%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                color: white;
+                font-size: 1.2em;
+                text-shadow: 1px 1px 3px #000;
+            }
+
+            /* Gallery Highlights */
+            .gallery-highlights {
+                padding: 20px;
+                text-align: center;
+            }
+
+            .gallery-highlights h2 {
+                font-size: 2em;
+                margin-bottom: 15px;
+            }
+
+            .gallery-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Adjusts to fit the screen */
+                gap: 10px; /* Space between items */
+            }
+
+            /* About Section */
+            #about {
+                background: #f4f4f4;
+                padding: 20px;
+                text-align: center;
+            }
+
+            #about h2 {
+                font-size: 2em;
+            }
+
+            #about p {
+                font-size: 1.1em;
+                margin: 10px 0;
+            }
+            .about-section {
+                padding: 50px;
+                background-color: #f9f9f9;
+                text-align: center;
+            }
+
+            .about-section h2 {
+                font-size: 2.5rem;
+                color: #333;
+                margin-bottom: 20px;
+            }
+
+            .about-content {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+                gap: 20px;
+            }
+
+            .about-text {
+                flex: 1;
+                max-width: 500px;
+                font-size: 1.4rem;
+                color: #555;
+                line-height: 1.6;
+                text-align: left;
+            }
+
+            .about-image {
+                flex: 1;
+                max-width: 500px;
+                text-align: center;
+            }
+
+            .about-image img {
+                border-radius: 10px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            }
+
+            .artist-spotlight {
+                padding: 50px 20px;
+                background-color: #f9f9f9;
+                text-align: center;
+            }
+
+            .artist-spotlight h2 {
+                font-size: 2.5rem;
+                margin-bottom: 30px;
+                color: #333;
+            }
+
+            .spotlight-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 40px; /* Increased gap between cards */
+                justify-items: center;
+                padding: 20px; /* Optional padding around the grid */
+            }
+
+            .spotlight-card {
+                background-color: #fff;
+                border-radius: 10px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                overflow: hidden;
+                width: 300px;
+                margin: 0 auto; /* Center align cards */
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
+            }
+
+            .spotlight-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            }
+
+            .spotlight-image img {
+                width: 100%;
+                height: auto;
+                display: block;
+                border-bottom: 3px solid #007BFF; /* Optional styling */
+            }
+
+            .spotlight-details {
+                padding: 20px;
+                text-align: center;
+            }
+
+            .spotlight-details h3 {
+                font-size: 1.5rem;
+                color: #333;
+                margin-bottom: 10px;
+            }
+
+            .spotlight-details p {
+                font-size: 1rem;
+                color: #555;
+                margin-bottom: 20px;
+            }
+
+            .spotlight-details .btn {
+                display: inline-block;
+                background-color: #007BFF;
+                color: #fff;
+                padding: 10px 20px;
+                border-radius: 5px;
+                text-decoration: none;
+                font-size: 1rem;
+                transition: background-color 0.3s ease;
+            }
+
+            .spotlight-details .btn:hover {
+                background-color: #0056b3;
+            }
+
+            .events-exhibitions {
+                padding: 50px 20px;
+                background-color: #f4f4f4;
+                text-align: center;
+            }
+
+            .events-exhibitions h2 {
+                font-size: 2.5rem;
+                color: #333;
+                margin-bottom: 30px;
+            }
+
+            .events-container {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 20px;
+                justify-content: center;
+            }
+
+            .event-card {
+                display: flex;
+                background-color: #fff;
+                border-radius: 10px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                overflow: hidden;
+                width: 350px;
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
+            }
+
+            .event-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            }
+
+            .event-date {
+                background-color: #007BFF;
+                color: #fff;
+                padding: 20px;
+                text-align: center;
+                flex-shrink: 0;
+                width: 80px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .event-date h3 {
+                font-size: 2rem;
+                margin: 0;
+            }
+
+            .event-date p {
+                font-size: 1rem;
+                margin: 0;
+            }
+
+            .event-details {
+                padding: 20px;
+                text-align: left;
+                flex-grow: 1;
+            }
+
+            .event-details h3 {
+                font-size: 1.5rem;
+                color: #333;
+                margin-bottom: 10px;
+            }
+
+            .event-details p {
+                font-size: 1rem;
+                color: #555;
+                margin-bottom: 20px;
+            }
+
+            .event-details .btn {
+                display: inline-block;
+                background-color: #007BFF;
+                color: #fff;
+                padding: 10px 20px;
+                border-radius: 5px;
+                text-decoration: none;
+                font-size: 1rem;
+                transition: background-color 0.3s ease;
+            }
+
+            .event-details .btn:hover {
+                background-color: #0056b3;
+            }
+
+            /* Footer */
+            footer {
+                background: #444;
+                color: #fff;
+                text-align: center;
+                padding: 10px 0;
+                margin-top: 20px;
+            }
+
+            footer .social-media a {
+                color: #fff;
+                text-decoration: none;
+                margin: 0 10px;
+            }
+            body {
+                font-family: 'Open Sans', sans-serif;
+                margin: 0;
+                padding: 0;
+                line-height: 1.6;
+                background-color: #f7f7f7;
+                color: #333;
+            }
+            .container {
+                max-width: 1200px;
+                margin: auto;
+                padding: 20px;
+            }
+            header {
+                background-color: #4b3b8f;
+                color: #fff;
+                padding: 15px 20px;
+                text-align: center;
+            }
+            .header-logo img {
+                max-width: 100px;
+                display: block;
+                margin: 0 auto;
+            }
+            h1, h2, h3 {
+                font-family: 'Playfair Display', serif;
+                margin-bottom: 15px;
+            }
+            .about-section, .vision-section, .offer-section, .story-section, .why-section, .join-section {
+                background: white;
+                padding: 30px;
+                margin-bottom: 20px;
+                border-radius: 10px;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            }
+            .about-section img, .vision-section img, .offer-section img, .story-section img {
+                max-width: 100%;
+                border-radius: 10px;
+                margin-bottom: 15px;
+            }
+            .about-section {
+                display: flex;
+                flex-wrap: wrap;
+                align-items: flex-start;
+            }
+            .about-text {
+                flex: 1;
+                padding-right: 20px;
+            }
+            .about-image {
+                flex: 1;
+            }
+            .about-text p {
+                font-size: 1rem;
+            }
+            .vision-section, .offer-section, .story-section, .why-section, .join-section {
+                border-top: 2px solid #4b3b8f;
+                padding-top: 20px;
+            }
+            .vision-section h2, .offer-section h2, .story-section h2, .why-section h2, .join-section h2 {
+                color: #4b3b8f;
+            }
+            .social-media {
+                margin-top: 15px;
+                text-align: center;
+            }
+            .social-media a {
+                margin: 0 10px;
+                text-decoration: none;
+                color: #4b3b8f;
+                font-weight: bold;
+            }
+            .social-media a:hover {
+                text-decoration: underline;
+            }
+
         </style>
     </head>
 <body>
     <!-- Header -->
     <header>
-        <a href="index.html"><img src="/static/images/logo.jpg" class="logo" alt="logo"></a>
+        <a href="/home"><img src="/static/images/logo.jpg" class="logo" alt="logo"></a>
         <nav>
             <ul class="nav_links">
-                <li><a href="/templates/index.html">Home</a></li>
-                <li><a href="/templates/index.html">About Us</a></li>
-                <li><a href="index.html">Events</a></li>
+                <li><a href="/home">Home</a></li>
+                <li><a href="/about">About Us</a></li>
+                <li><a href="/events">Events</a></li>
                 <li><a href="/artwork">Artworks</a></li>
-                <li><a href="index.html">Contact Us</a></li>
+                <li><a href="contact">Contact Us</a></li>
             </ul>
         </nav>
         <a class="cta" href="#"><button>Login</button></a>
@@ -33,19 +488,30 @@
 
     <!-- Hero Section -->
     <section class="hero">
-        <img src="/static/images/bg.jfif" alt="Art Banner" style="width:100%; height:1000px;">
+        <img src="/static/images/bg.jfif" alt="Art Banner" style="width:100%; height:650px;">
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <a href="/about" target="_blank"><h2>About Us</h2></a>
+        <p>Welcome to Art Haven - a contemporary art gallery that showcases innovative artwork from both emerging and established artists. We believe art is a powerful catalyst for dialogue, introspection, and change, and our mission is to foster a deeper connection between art and its audience.</p>
     </section>
 
     <!-- Gallery Highlights -->
     <section class="gallery-highlights">
         <h2>Featured Artworks</h2>
         <div class="gallery-grid">
-            <img src="/static/images/painting_1.jpg" class= "artwork_image" alt="Painting 1">
-            <img src="/static/images/painting_2.jpg" class= "artwork_image" alt="Painting 2">
-            <img src="/static/images/sketch_1.jpg" class= "artwork_image" alt="Sketch 1">
-            <img src="/static/images/pottery_1.jpg" class= "artwork_image" alt="Pottery 1">
-        </div>
+            {% for artwork in artworks %}
+            <div class="gallery-item">
+                <a href="/artwork/{{ artwork[0] }}">  <!-- Assuming artwork[0] is the ID -->
+                    <img src="{{ artwork[3] }}" class="artwork_image" alt="{{ artwork[2] }}">
+                </a>
+            </div>
+            {% endfor %}
+        </div> <!-- Closing the gallery-grid div -->
     </section>
+    
+    
 
     <!-- Artist Spotlight Section -->
 <section class="artist-spotlight">
@@ -59,7 +525,7 @@
             <div class="spotlight-details">
                 <h3>Arjun Mehta</h3>
                 <p>Arjun is a celebrated contemporary painter from Delhi, known for his surreal landscapes that blend urban and rural themes with a dreamlike quality.</p>
-                <a href="/artist/arjun-mehta" class="btn">Learn More</a>
+                <a href="/artists" class="btn">Learn More</a>
             </div>
         </div>
 
@@ -71,7 +537,7 @@
             <div class="spotlight-details">
                 <h3>Priya Nair</h3>
                 <p>Hailing from Kerala, Priya specializes in traditional mural art, reviving ancient Indian techniques with a modern twist. Her vibrant works celebrate cultural heritage.</p>
-                <a href="/artist/priya-nair" class="btn">Learn More</a>
+                <a href="/artists" class="btn">Learn More</a>
             </div>
         </div>
 
@@ -83,7 +549,7 @@
             <div class="spotlight-details">
                 <h3>Ravi Deshpande</h3>
                 <p>Based in Mumbai, Ravi is a multimedia artist whose work spans sculpture, digital art, and installations that challenge societal norms and spark conversations.</p>
-                <a href="/artist/ravi-deshpande" class="btn">Learn More</a>
+                <a href="/artists" class="btn">Learn More</a>
             </div>
         </div>
 
@@ -95,7 +561,7 @@
             <div class="spotlight-details">
                 <h3>Meera Kapoor</h3>
                 <p>A passionate photographer from Kolkata, Meera captures the essence of India's diverse cultures through her evocative black-and-white portraits.</p>
-                <a href="/artist/meera-kapoor" class="btn">Learn More</a>
+                <a href="/artists" class="btn">Learn More</a>
             </div>
         </div>
 
@@ -107,7 +573,7 @@
             <div class="spotlight-details">
                 <h3>Anjali Sharma</h3>
                 <p>Anjali, from Jaipur, is known for her intricate miniature paintings, reflecting Rajasthan's rich artistic traditions with a contemporary flair.</p>
-                <a href="/artist/anjali-sharma" class="btn">Learn More</a>
+                <a href="/artists" class="btn">Learn More</a>
             </div>
         </div>
 
@@ -127,7 +593,7 @@
             <div class="event-details">
                 <h3>Winter Art Gala</h3>
                 <p>A celebration of contemporary art with live performances, workshops, and exclusive collections from emerging artists.</p>
-                <a href="/events/winter-art-gala" class="btn">Learn More</a>
+                <a href="/events" class="btn">Learn More</a>
             </div>
         </div>
 
@@ -140,7 +606,7 @@
             <div class="event-details">
                 <h3>Pottery Workshop</h3>
                 <p>Join our hands-on pottery workshop to learn traditional Indian pottery techniques with expert artists.</p>
-                <a href="/events/pottery-workshop" class="btn">Learn More</a>
+                <a href="/events" class="btn">Learn More</a>
             </div>
         </div>
 
@@ -153,7 +619,7 @@
             <div class="event-details">
                 <h3>Photography Exhibition</h3>
                 <p>Explore stunning visual stories captured by renowned photographers from across India.</p>
-                <a href="/events/photography-exhibition" class="btn">Learn More</a>
+                <a href="/events" class="btn">Learn More</a>
             </div>
         </div>
 
@@ -166,7 +632,7 @@
             <div class="event-details">
                 <h3>Art & Sustainability Forum</h3>
                 <p>An interactive forum exploring how art can inspire sustainable living, featuring panel discussions and eco-friendly installations.</p>
-                <a href="/events/art-sustainability-forum" class="btn">Learn More</a>
+                <a href="/events" class="btn">Learn More</a>
             </div>
         </div>
 
@@ -179,16 +645,12 @@
             <div class="event-details">
                 <h3>Spring Sculpture Exhibition</h3>
                 <p>A showcase of breathtaking sculptures from emerging and established artists, celebrating forms and textures in 3D art.</p>
-                <a href="/events/spring-sculpture-exhibition" class="btn">Learn More</a>
+                <a href="/events" class="btn">Learn More</a>
             </div>
         </div>
     </div>
 </section>
-<!-- About Section -->
-<section id="about">
-    <a href="/aboutus" target="_blank"><h2>About Us</h2></a>
-    <p>Welcome to our Art Gallery, a space to celebrate creativity and artistic expression. From paintings to pottery, our gallery showcases the talents of artists worldwide.</p>
-</section>
+
     <!-- Footer -->
     <footer>
         <p>&copy; 2024 Art Gallery. All rights reserved.</p>

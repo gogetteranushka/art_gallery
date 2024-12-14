@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+{% extends "admin_dashboard.html" %}
+
+<title>View Orders</title>
+
+{% block adminoperations %}
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            font-size: 16px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+            font-weight: bold;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        .table-container {
+            width: 90%;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 28px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        .btn-success {
+            background-color: #31180b;
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Add some margin to the checkbox column */
+        .checkbox-column {
+            text-align: center;
+        }
+
+    </style>
+
+    <div class="table-container">
+        <h2>View Orders</h2>
+
+        <form action="/confirm_orders" method="POST">
+            <table>
+                <tr>
+                    <th>Select</th>
+                    <th>Order Id</th>
+                    <th>Order Date</th>
+                    <th>Product Name</th>
+                    <th>Price</th>
+                    <th>User Email</th>
+                    <th>Status</th>
+                </tr>
+
+                {% for res in res %}
+                    <tr>
+                        <td class="checkbox-column">
+                            {% if res[4] == 'processing' %}
+                                <input type="checkbox" name="selected_orders" value="{{ res[0] }}">
+                            {% else %}
+                                <input type="checkbox" disabled>
+                            {% endif %}
+                        </td>
+                        <td>{{ res[0] }}</td>
+                        <td>{{ res[1] }}</td>
+                        <td>{{ res[2] }}</td>
+                        <td>₹{{ res[3] }}</td>
+                        <td>{{ res[5] }}</td>
+                        <td>{{ res[4] }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+
+            <div style="text-align: center; margin-top: 20px;">
+                <button type="submit" class="btn btn-success">Confirm Selected Orders</button>
+            </div>
+        </form>
+    </div>
+{% endblock %}

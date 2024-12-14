@@ -7,16 +7,19 @@
     <img src="/static/images/bg.jfif" alt="Art Banner" style="width:100%; height:1000px;">
 </section>
 
-<!-- Gallery Highlights -->
-<section class="gallery-highlights">
-    <h2>Featured Artworks</h2>
-    <div class="gallery-grid">
-        <img src="/static/images/painting_1.jpg" class= "artwork_image" alt="Painting 1">
-        <img src="/static/images/painting_2.jpg" class= "artwork_image" alt="Painting 2">
-        <img src="/static/images/sketch_1.jpg" class= "artwork_image" alt="Sketch 1">
-        <img src="/static/images/pottery_1.jpg" class= "artwork_image" alt="Pottery 1">
-    </div>
-</section>
+    <!-- Gallery Highlights -->
+    <section class="gallery-highlights">
+        
+        {{ session['is_admin'] }}
+        {{ session['is_user'] }}
+        <h2>Featured Artworks </h2>
+        <div class="gallery-grid">
+            <img src="/static/images/painting_1.jpg" alt="Painting 1">
+            <img src="/static/images/painting_2.jpg" alt="Painting 2">
+            <img src="/static/images/sketch_1.jpg" alt="Sketch 1">
+            <img src="/static/images/pottery_1.jpg" alt="Pottery 1">
+        </div>
+    </section>
 
     <!-- About Section -->
     <section id="about">
