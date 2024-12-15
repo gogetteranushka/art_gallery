@@ -1,44 +1,161 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    {% extends "add_event.html" %}
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modify Artwork</title>
-</head>
+{% extends "admin_dashboard.html" %}
+
+<title>Modify Artwork</title>
+
+{% block style %}
+<style>
+    body {
+        font-family: 'Arial', sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f7f6;
+    }
+
+    h1 {
+        text-align: center;
+        color: #333;
+        margin-top: 40px;
+        font-size: 30px;
+        font-weight: 600;
+    }
+
+    table {
+        width: 80%;
+        margin: 20px auto;
+        border-collapse: collapse;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    table th, table td {
+        padding: 12px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+
+    table th {
+        background-color: #6a1b9a;
+        color: white;
+        font-size: 16px;
+    }
+
+    table tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+
+    table tr:hover {
+        background-color: #f1f1f1;
+    }
+
+    form {
+        max-width: 600px;
+        margin: 40px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    label {
+        display: block;
+        margin-bottom: 10px;
+        font-weight: bold;
+        color: #555;
+        font-size: 16px;
+    }
+
+    input[type="text"], input[type="file"], input[type="number"], textarea {
+        width: 100%;
+        padding: 12px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        font-size: 16px;
+        box-sizing: border-box;
+    }
+
+    input[type="submit"] {
+        display: block;
+        width: 100%;
+        padding: 12px;
+        background-color: #6a1b9a;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        font-size: 18px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #4a148c;
+    }
+</style>
+{% endblock %}
+
 <body>
     {% block adminoperations %}
+    <h1>Existing Artwork:</h1>
+    <table>
+        <tr>
+            <th>Artwork ID</th>
+            <th>Category</th>
+            <th>Name</th>
+            <th>Artist</th>
+            <th>Year</th>
+            <th>Price</th>
+            <th>Description</th>
+            <th>Product Path</th>
+        </tr>
+        {% for res in res %}
+        <tr>
+            <td>{{ res[0] }}</td>
+            <td>{{ res[1] }}</td>
+            <td>{{ res[2] }}</td>
+            <td>{{ res[4] }}</td>
+            <td>{{ res[5] }}</td>
+            <td>{{ res[7] }}</td>
+            <td>{{ res[8] }}</td>
+            <td>{{ res[3] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
     <h1>Modify Artwork</h1>
-    <form action="/modifying_artwork" method="POST" enctype="multipart/form-data">
-        <label for="artwork_id">Artwork ID:</label>
-        <input type="text" name="artwork_id" required><br><br>
-        
-        <label for="category">Category:</label>
-        <input type="text" name="category"><br><br>
-        
-        <label for="name">Artwork Name:</label>
-        <input type="text" name="name" required><br><br>
-        
-        <label for="artist_name">Artist Name:</label>
-        <input type="text" name="artist_name" required><br><br>
-        
-        <label for="year">Year:</label>
-        <input type="number" name="year"><br><br>
-        
-        <label for="size">Size:</label>
-        <input type="text" name="size"><br><br>
-        
-        <label for="price">Price:</label>
-        <input type="number" name="price"><br><br>
+    <form method="POST" action="/modifying_artwork" enctype="multipart/form-data">
+        <label for="artwork_id">Artwork ID (to Modify)</label>
+        <input type="text" id="artwork_id" name="artwork_id" required>
 
-        <label for="description">Description:</label>
-        <textarea name="description" rows="4" cols="50"></textarea><br><br>
+        <label for="category">New Category</label>
+        <input type="text" id="category" name="category">
 
-        <label for="product_path">Product Image:</label>
-        <input type="file" name="product_path"><br><br>
-        
+        <label for="name">New Artwork Name</label>
+        <input type="text" id="name" name="name">
+
+        <label for="product_path">New Product Path</label>
+        <input type="text" id="product_path" name="product_path">
+
+        <label for="artist_name">New Artist Name</label>
+        <input type="text" id="artist_name" name="artist_name">
+
+        <label for="year">New Year</label>
+        <input type="number" id="year" name="year">
+
+        <label for="size">New Size</label>
+        <input type="text" id="size" name="size">
+
+        <label for="price">New Price</label>
+        <input type="number" step="0.01" id="price" name="price">
+
+        <label for="description">New Description</label>
+        <textarea id="description" name="description" rows="4"></textarea>
+
+        <label for="artwork_img">New Artwork Image</label>
+        <input type="file" name="artwork_img">
+
         <input type="submit" value="Modify Artwork">
     </form>
     {% endblock %}
 </body>
-</html>

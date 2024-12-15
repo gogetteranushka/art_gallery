@@ -1,22 +1,157 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    {% extends "add_event.html" %}
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Delete Artwork</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-</head>
+{% extends "admin_dashboard.html" %}
+
+<title>Delete Artwork</title>
+
+{% block style %}
+<style>
+    body {
+        font-family: 'Arial', sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f7f6;
+    }
+
+    h1 {
+        text-align: center;
+        color: #333;
+        margin-top: 40px;
+        font-size: 30px;
+        font-weight: 600;
+    }
+
+    table {
+        width: 80%;
+        margin: 20px auto;
+        border-collapse: collapse;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    table th, table td {
+        padding: 12px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+
+    table th {
+        background-color: #6a1b9a;
+        color: white;
+        font-size: 16px;
+    }
+
+    table tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+
+    table tr:hover {
+        background-color: #f1f1f1;
+    }
+
+    form {
+        max-width: 600px;
+        margin: 40px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    label {
+        display: block;
+        margin-bottom: 10px;
+        font-weight: bold;
+        color: #555;
+        font-size: 16px;
+    }
+
+    input[type="text"] {
+        width: 100%;
+        padding: 12px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        font-size: 16px;
+        box-sizing: border-box;
+    }
+
+    input[type="submit"] {
+        display: block;
+        width: 100%;
+        padding: 12px;
+        background-color: #6a1b9a;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        font-size: 18px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #4a148c;
+    }
+</style>
+{% endblock %}
+
 <body>
     {% block adminoperations %}
-    <div class="container">
-        <h1>Delete Artwork</h1>
-        <form action="/deleting_artwork" method="POST">
-            <label for="artwork_id">Artwork ID:</label>
-            <input type="text" name="artwork_id" placeholder="Enter Artwork ID" required><br><br>
-            <input type="submit" class="btn btn-danger" value="Delete Artwork">
-        </form>
-        {% endblock %}
-    </div>
+    <h1>Existing Artworks:</h1>
+    <table>
+        <tr>
+            <th>Artwork ID</th>
+            <th>Artwork Name</th>
+            <th>Artist Name</th>
+
+        </tr>
+        {% for res in res %}
+        <tr>
+            <td>{{ res[0] }}</td>
+            <td>{{ res[1] }}</td>
+            <td>{{ res[2] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h1>Delete Artwork</h1>
+    <form method="POST" action="/deleting_artwork">
+        <label for="id">Artwork ID (to Delete)</label>
+        <input type="text" id="id" name="id" required>
+
+        <input type="submit" value="Delete Artwork">
+    </form>
+    {% endblock %}
 </body>
-</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

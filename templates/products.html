@@ -49,10 +49,16 @@
             <li>{{ res[5] }}</li>
             <li>Size: {{ res[6] }}</li>
             <li>Description: {{ res[8] }}</li>
+            <!-- <li>{{product_id}}</li> -->
         </ul>
-        <form action="/cart" method="post">
+        <form action="/add_to_cart" method="post">
             <input type="hidden" name="product_id" value="{{ res[0] }}">
-            <input type="submit" name="addtocart" value="Buy Now">
+
+            <!-- Capture product name and product price -->
+            <input type="hidden" name="product_name" value="{{ res[2] }}">
+            <input type="hidden" name="product_price" value="{{ res[7] }}">
+
+            <input type="submit" name="addtocart" value="Add to Cart">
         </form>
     </div>
 </div>

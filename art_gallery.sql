@@ -92,4 +92,82 @@ create table customer_query(
     message varchar(500)
 );
 
-SELECT event_name FROM mydb2.events WHERE event_date BETWEEN CURRENT_DATE() AND '2025-01-30';
+SELECT event_name FROM mydb2.events WHERE event_date BETWEEN CURRENT_DATE() AND '2025-01-30' LIMIT 2;
+
+create table orders(
+id INT AUTO_INCREMENT PRIMARY KEY,
+    order_date DATE,
+    product_name VARCHAR(255),
+    price DECIMAL(10, 2),
+    status VARCHAR(50),
+    user_email VARCHAR(255)
+);
+drop table event_users;
+
+create table event_users(
+	user_id int auto_increment primary key,
+	fname varchar(256),
+    lname varchar(256),
+    email varchar(256),
+    phone varchar(15),
+    event varchar(100)
+);
+
+insert into artwork values
+(23,'Photography', 'Desert Oasis Classic','static/images/photography_1.jpg','Anjali Sharma', 2020, '14"x24"', 700,'A timeless white car parked beneath a lone tree in an arid, dramatic desert landscape.'),
+(24,'Photography', 'Abandoned Serenity','static/images/photography_2.jpg','Arjun Mehta', 2021, '14"x24"', 800,'A weathered, solitary wooden house stands resilient amidst a vast and empty plain.'),
+(25,'Photography', 'Vintage Charm on the Trail','static/images/photography_3.jpg','Anjali Sharma', 2020, '14"x24"', 900,'A radiant red vintage car parked along a dirt path with lush greenery in the background.'),
+(26,'Photography', 'Timeless Gaze','static/images/photography_4.jpg','Priya Nair', 2023, '14"x24"', 700,'A black-and-white portrait of a woman lost in thought, her eyes fixed on the infinite, capturing a moment of quiet introspection.'),
+(27,'Photography', 'Echo of Resilience','static/images/photography_5.jpg','Ravi Deshpande', 2020, '14"x24"', 800,'A solitary withered tree stands as a stark reminder of endurance amidst the passage of time.');
+
+drop table event_users;
+
+create table registered_users(
+	user_id int auto_increment primary key,
+	fname varchar(256),
+    lname varchar(256),
+    email varchar(256),
+    password varchar(256),
+    c_password varchar(256),
+    phone varchar(15),
+    address varchar(500)
+);
+
+CREATE TABLE cart (
+    user_id INT,
+    user_name VARCHAR(50),
+    product_id INT,
+    product_name VARCHAR(100),
+    price FLOAT
+);
+
+drop table customer_query;
+
+create table customer_query(
+	name varchar(50),
+    email varchar(100),
+    message varchar(500),
+    status varchar(50)
+);
+
+create table admin(
+	email varchar(100),
+    password varchar(10)
+);
+
+insert into admin values
+('admin@gmail.com', 'admin123');
+
+insert into cart values (1,"A",2,"ABC",700), (1,"A",3,"DEF",600), (1,"A",4,"EFG",700);
+
+SELECT SUM(price) AS total_price FROM cart WHERE user_id=1;
+
+drop table customer_query;
+
+create table customer_query(
+	query_id int primary key auto_increment,
+	name varchar(50),
+    email varchar(100),
+    message varchar(500),
+    status varchar(50)
+);

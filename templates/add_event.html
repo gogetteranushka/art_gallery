@@ -3,14 +3,18 @@
 
 <title>Add Event</title>
 
+
 {% block style %}
 <style>
     body {
         font-family: 'Arial', sans-serif;
+        font-family: 'Arial', sans-serif;
         margin: 0;
         padding: 0;
         background-color: #f4f7f6;
+        background-color: #f4f7f6;
     }
+
 
     h1 {
         text-align: center;
@@ -18,7 +22,14 @@
         margin-top: 40px;
         font-size: 30px;
         font-weight: 600;
+        margin-top: 40px;
+        font-size: 30px;
+        font-weight: 600;
     }
+
+    /* Style for the table displaying existing events */
+    table {
+        width: 80%;
 
     /* Style for the table displaying existing events */
     table {
@@ -48,7 +59,7 @@
 
     table tr:hover {
         background-color: #f1f1f1;
-    }
+    }   
 
     /* Style for the add event form */
     form {
@@ -60,20 +71,33 @@
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
 
-
     label {
         display: block;
+        margin-bottom: 10px;
         margin-bottom: 10px;
         font-weight: bold;
         color: #555;
         font-size: 16px;
+        font-size: 16px;
     }
+
+    input[type="text"], input[type="date"], input[type="file"], textarea {
 
     input[type="text"], input[type="date"], input[type="file"], textarea {
         width: 100%;
         padding: 12px;
         margin-bottom: 20px;
+        padding: 12px;
+        margin-bottom: 20px;
         border: 1px solid #ccc;
+        border-radius: 6px;
+        font-size: 16px;
+        box-sizing: border-box;
+    }
+
+    textarea {
+        resize: vertical;
+        min-height: 120px;
         border-radius: 6px;
         font-size: 16px;
         box-sizing: border-box;
@@ -86,17 +110,49 @@
 
     /* Style the submit button */
     input[type="submit"] {
+
+    /* Style the submit button */
+    input[type="submit"] {
         display: block;
         width: 100%;
+        padding: 12px;
         padding: 12px;
         background-color: #d25e1f;
         color: white;
         border: none;
         border-radius: 6px;
         font-size: 18px;
+        border-radius: 6px;
+        font-size: 18px;
         cursor: pointer;
         transition: background-color 0.3s ease;
+        transition: background-color 0.3s ease;
     }
+
+    input[type="submit"]:hover {
+        background-color: #b1541a;
+    }
+
+    /* Media Query for smaller screens */
+    @media (max-width: 768px) {
+        table {
+            width: 90%;
+        }
+
+        form {
+            width: 90%;
+            padding: 15px;
+        }
+
+        input[type="submit"] {
+            font-size: 16px;
+        }
+
+        h1 {
+            font-size: 24px;
+        }
+    }
+
 
     input[type="submit"]:hover {
         background-color: #b1541a;
@@ -125,6 +181,7 @@
 </style>
 {% endblock %}
 
+
 <body>
     {% block adminoperations %}
 
@@ -143,13 +200,14 @@
             <td>{{res[1]}}</td>
             <td>{{res[2]}}</td>
             <td>{{res[3]}}</td>
-            <td>{{res[4]}}</td>
+            <td><img src="{{res[4]}}" width="100px" height="100px"></td>
         </tr>
         {% endfor %}
     </table>
 
     <h1>Add Event</h1>
     <form method="POST" action="/adding_events" enctype="multipart/form-data">
+
         <label for="name">Event Name</label>
         <input type="text" id="name" name="name" required>
 
@@ -157,6 +215,7 @@
         <input type="date" id="date" name="date" required>
 
         <label for="description">Description</label>
+        <textarea id="description" name="description" rows="4" required></textarea>
         <textarea id="description" name="description" rows="4" required></textarea>
 
         <label for="event_img">Add Event Poster</label>

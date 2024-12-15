@@ -11,18 +11,19 @@ header {
     /* width: 100%; */
     display: flex;
     justify-content: space-between;
+    height: 75px;
     align-items: center;
     padding: 20px 10%;
-    background-color: #333; /* Dark background for the header */
+    background-color: black; /* Dark background for the header */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    border-bottom: 4px solid #ff6600; /* Orange border under the header */
+    border-bottom: 4px solid cornflowerblue; /* Orange border under the header */
 }
 
 .logo {
-    width: 120px; /* Increase the size of the logo */
-    height: 120px;
+    width: 80px; /* Increase the size of the logo */
+    height: 80px;
     cursor: pointer;
-    border-radius: 50%; /* Keep the circular border around the logo */
+    /* border-radius: 50%; Keep the circular border around the logo */
     transition: transform 0.3s ease; /* Smooth transition for hover effect */
 }
 
@@ -47,7 +48,7 @@ header {
 }
 
 .nav_links li a:hover {
-    background-color: #ff6600; /* Highlight the links with the primary color */
+    background-color: cornflowerblue; /* Highlight the links with the primary color */
     color: #fff; /* Ensure text remains white on hover */
     transform: scale(1.1); /* Slight zoom effect on hover */
 }
@@ -58,7 +59,7 @@ header {
 
 .cta button {
     padding: 12px 30px;
-    background-color: #ff6600; /* Orange button color */
+    background-color: cornflowerblue; /* Orange button color */
     color: white;
     border: none;
     border-radius: 5px;
@@ -74,7 +75,7 @@ header {
 }
 
 .cta button:hover {
-    background-color: #e64a19; /* Slightly darker shade of orange on hover */
+    background-color: blue; /* Slightly darker shade of orange on hover */
     transform: scale(1.1); /* Smooth zoom effect for the button */
 }
 
@@ -112,7 +113,7 @@ h1, p {
   /* Section 2 (Events) */
 .events-section {
     padding: 50px 10%;
-    /* background-color: #2c2c2c; Darker gray for the section */
+    /* background-color: black; Darker gray for the section */
     text-align: center;
   }
   
@@ -133,7 +134,7 @@ h1, p {
   }
   
   .event-card {
-    background-color: #333; /* Dark gray background for each card */
+    background-color: black; /* Dark gray background for each card */
     border-radius: 8px;
     overflow: hidden; /* Ensures the content fits nicely within the card */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
@@ -152,7 +153,7 @@ h1, p {
   
   .event-details {
     padding: 20px;
-    background-color: #444; /* Slightly lighter gray for the details */
+    background-color: black; /* Slightly lighter gray for the details */
     text-align: left;
   }
   
@@ -172,7 +173,7 @@ h1, p {
   .event-details .btn {
     display: inline-block;
     background-color: #fff;
-    color: #333;
+    color: black;
     padding: 10px 20px;
     font-weight: bold;
     text-transform: uppercase;
@@ -181,7 +182,7 @@ h1, p {
   }
   
   .event-details .btn:hover {
-    background-color: #ff6600;
+    background-color: cornflowerblue;
     color: white;
   }
   
@@ -205,7 +206,7 @@ h1, p {
 
 /* Footer Styling */
 .footer {
-    background-color: #333; /* Dark gray background to match the theme */
+    background-color: black; /* Dark gray background to match the theme */
     color: #ccc; /* Light gray text for readability */
     text-align: center;
     padding: 10px 20px;
@@ -233,7 +234,7 @@ h1, p {
 }
 
 .social-link:hover {
-    color: #ff6600; /* Orange color on hover for the links */
+    color: cornflowerblue; /* Orange color on hover for the links */
 }
 
 @media (max-width: 768px) {
@@ -250,7 +251,7 @@ h1, p {
 .artists-section {
     padding: 40px 0;
     background-color: #f4f4f4; /* Light gray background to create contrast */
-    color: #333; /* Dark gray text for readability */
+    color: black; /* Dark gray text for readability */
 }
 
 .artists-section h2 {
@@ -278,7 +279,7 @@ h1, p {
 
 .artists-table b {
     font-size: 1.5rem;
-    color: #333; /* Dark gray color for artist names */
+    color: black; /* Dark gray color for artist names */
     margin-bottom: 10px;
 }
 
@@ -302,13 +303,13 @@ h1, p {
     margin: 0 auto;
     padding: 40px;
     background-color: #fff;
-    color: #333;
+    color: black;
 }
 
 .page-title {
     text-align: center;
     font-size: 36px;
-    color: #333;
+    color: black;
     margin-bottom: 30px;
     font-style: italic;
 }
@@ -348,7 +349,7 @@ form {
 
 label {
     font-size: 18px;
-    color: #333;
+    color: black;
     display: block;
     margin-bottom: 5px;
 }
@@ -368,7 +369,7 @@ textarea {
 }
 
 input[type="submit"] {
-    background-color: #333;
+    background-color: black;
     color: #fff;
     padding: 12px 20px;
     font-size: 16px;
@@ -379,7 +380,7 @@ input[type="submit"] {
 }
 
 input[type="submit"]:hover {
-    background-color: #555;
+    background-color: blue;
 }
 
 /* General container for the About Us page */
@@ -388,13 +389,13 @@ input[type="submit"]:hover {
     margin: 0 auto;
     padding: 40px;
     background-color: #fff;
-    color: #333;
+    color: black;
 }
 
 .page-title {
     text-align: center;
     font-size: 36px;
-    color: #333;
+    color: black;
     margin-bottom: 30px;
     font-style: italic;
 }
@@ -432,7 +433,7 @@ ul.offer-list li {
     margin: 0 auto;
     padding: 40px;
     background-color: #fff;
-    color: #333;
+    color: black;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
 }
@@ -440,7 +441,7 @@ ul.offer-list li {
 .page-title {
     text-align: center;
     font-size: 32px;
-    color: #333;
+    color: black;
     margin-bottom: 20px;
     font-style: italic;
 }
@@ -461,7 +462,7 @@ ul.offer-list li {
 .login-form label {
     font-size: 18px;
     font-weight: bold;
-    color: #333;
+    color: black;
 }
 
 .login-form input {
@@ -475,7 +476,7 @@ ul.offer-list li {
 .submit-btn {
     padding: 12px;
     font-size: 18px;
-    background-color: #333;
+    background-color: black;
     color: white;
     border: none;
     border-radius: 4px;
@@ -483,7 +484,7 @@ ul.offer-list li {
 }
 
 .submit-btn:hover {
-    background-color: #555;
+    background-color: blue;
 }
 
 .register-link {
@@ -493,7 +494,7 @@ ul.offer-list li {
 }
 
 .register-link a {
-    color: #333;
+    color: black;
     text-decoration: none;
 }
 
@@ -508,7 +509,7 @@ ul.offer-list li {
     margin: 0 auto;
     padding: 40px;
     background-color: #fff;
-    color: #333;
+    color: black;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
 }
@@ -516,7 +517,7 @@ ul.offer-list li {
 .page-title {
     text-align: center;
     font-size: 32px;
-    color: #333;
+    color: black;
     margin-bottom: 20px;
     font-style: italic;
 }
@@ -537,7 +538,7 @@ ul.offer-list li {
 .registration-form label {
     font-size: 18px;
     font-weight: bold;
-    color: #333;
+    color: black;
 }
 
 .registration-form input,
@@ -556,7 +557,7 @@ ul.offer-list li {
 .submit-btn {
     padding: 12px;
     font-size: 18px;
-    background-color: #333;
+    background-color: black;
     color: white;
     border: none;
     border-radius: 4px;
@@ -564,7 +565,7 @@ ul.offer-list li {
 }
 
 .submit-btn:hover {
-    background-color: #555;
+    background-color: blue;
 }
 
 /* Hero Section */
@@ -609,7 +610,7 @@ ul.offer-list li {
 .gallery-highlights h2 {
     font-size: 2rem;
     margin-bottom: 30px;
-    color: #333;
+    color: black;
 }
 
 .gallery-grid {
@@ -634,7 +635,7 @@ ul.offer-list li {
 
 #about h2 {
     font-size: 2rem;
-    color: #333;
+    color: black;
     margin-bottom: 20px;
 }
 
@@ -652,7 +653,7 @@ ul.offer-list li {
     font-size: 2rem;
     text-align: center;
     margin-bottom: 30px;
-    color: #333;
+    color: black;
 }
 
 .spotlight-grid {
@@ -686,7 +687,7 @@ ul.offer-list li {
 .spotlight-details h3 {
     font-size: 1.5rem;
     margin-bottom: 10px;
-    color: #333;
+    color: black;
 }
 
 .spotlight-details p {
@@ -697,7 +698,7 @@ ul.offer-list li {
 
 .spotlight-details .btn {
     display: inline-block;
-    background-color: #ff6600;
+    background-color: cornflowerblue;
     color: white;
     padding: 10px 20px;
     text-decoration: none;
@@ -707,7 +708,7 @@ ul.offer-list li {
 }
 
 .spotlight-details .btn:hover {
-    background-color: #e64a19;
+    background-color: blue;
 }
 
 /* Events Section */
@@ -720,7 +721,7 @@ ul.offer-list li {
     font-size: 2rem;
     text-align: center;
     margin-bottom: 30px;
-    color: #333;
+    color: black;
 }
 
 .events-container {
@@ -739,7 +740,7 @@ ul.offer-list li {
 }
 
 .event-date {
-    background-color: #ff6600;
+    background-color: cornflowerblue;
     color: white;
     text-align: center;
     padding: 20px;
@@ -757,18 +758,18 @@ ul.offer-list li {
 .event-details h3 {
     font-size: 1.5rem;
     margin-bottom: 10px;
-    color: #333;
+    color: black;
 }
 
 .event-details p {
     font-size: 1rem;
-    color: #666;
+    color: white;
     margin-bottom: 15px;
 }
 
 .event-details .btn {
     display: inline-block;
-    background-color: #ff6600;
+    background-color: cornflowerblue;
     color: white;
     padding: 10px 20px;
     text-decoration: none;
@@ -778,7 +779,7 @@ ul.offer-list li {
 }
 
 .event-details .btn:hover {
-    background-color: #e64a19;
+    background-color: blue;
 }
 
 /* Artworks + Products Page Styling */
@@ -795,7 +796,7 @@ ul.offer-list li {
 
 /* Each individual card */
 .artworks-card {
-    background-color: #333;
+    background-color: black;
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
@@ -823,7 +824,7 @@ ul.offer-list li {
 }
 
 .artworks-details .btn:hover {
-    background-color: #005f75;
+    background-color: blue;
 }
 .artworks-card:hover{
     transform: translateY(-10px);

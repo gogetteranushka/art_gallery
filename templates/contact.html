@@ -1,8 +1,74 @@
 <!DOCTYPE html>
 {% extends "index.html" %}
 
+{% block section1 %}
+<style>
+    .flash {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 25px;
+        margin: 15px auto;
+        border-radius: 8px;
+        font-size: 16px;
+        max-width: 600px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        animation: fadeIn 0.5s ease-out;
+        position: relative;
+        font-family: 'Arial', sans-serif;
+        background-color: #d4edda;
+        color: #155724;
+        border-left: 5px solid #28a745;
+    }
+
+    .flash-icon {
+        font-size: 24px;
+        margin-right: 15px;
+    }
+
+    .flash-text {
+        flex-grow: 1;
+    }
+
+
+    .close-btn {
+        background: none;
+        border: none;
+        font-size: 20px;
+        color: #155724;
+        font-weight: bold;
+        cursor: pointer;
+        margin-left: 15px;
+    }
+
+    .close-btn:hover {
+        color: #721c24;
+    }
+
+</style>
+
+
+<script>
+    function closeFlash(button) {
+        var flashMessage = button.parentElement;
+        flashMessage.style.display = 'none';
+    }
+</script>
+
+{% endblock %}
 {% block section7 %}
 <div class="contact-us-container">
+    
+    {% for message in get_flashed_messages() %}
+    <div class="flash">
+        <div class="flash-icon">
+            <i class="fas fa-check-circle"></i>
+        </div>
+        <div class="flash-text">{{ message }}</div>
+        <button class="close-btn" onclick="closeFlash(this)">×</button>
+    </div>
+    {% endfor %}
+
     <h1 class="page-title">Contact Us</h1>
     <p>Thank you for your interest in Art Haven! Whether you have questions about our current exhibitions, need more information about a specific artwork, or want to connect with us for any other reason, we are here to help.</p>
 
@@ -33,6 +99,8 @@
     </div>
 
     <div class="contact-details">
+
+
         <h2 class="section-title">Contact Form</h2>
         <p>We'd love to hear from you! Please fill out the form below, and we’ll get back to you as soon as possible.</p>
 

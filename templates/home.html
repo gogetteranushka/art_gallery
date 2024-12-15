@@ -1,11 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" type="text/css" href="/static/style.css">
-        <title>Home Page</title>
-        <style>
+{% extends "index.html" %}
+
+{% block section14 %}
+
+<!-- <style>
             .artwork_image{
                 transition: .9s ease;
 
@@ -468,36 +466,15 @@
                 text-decoration: underline;
             }
 
-        </style>
-    </head>
-<body>
-    <!-- Header -->
-    <header>
-        <a href="/home"><img src="/static/images/logo.jpg" class="logo" alt="logo"></a>
-        <nav>
-            <ul class="nav_links">
-                <li><a href="/home">Home</a></li>
-                <li><a href="/about">About Us</a></li>
-                <li><a href="/events">Events</a></li>
-                <li><a href="/artwork">Artworks</a></li>
-                <li><a href="contact">Contact Us</a></li>
-            </ul>
-        </nav>
-        <a class="cta" href="/login"><button>Login</button></a>
-    </header>
+        </style> -->
+<!-- Hero Section -->
+<section class="hero">
+    <img src="/static/images/bg.jfif" alt="Art Banner" style="width:100%; height:650px;">
+</section>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <img src="/static/images/bg.jfif" alt="Art Banner" style="width:100%; height:650px;">
-    </section>
 
-    <!-- About Section -->
-    <section id="about">
-        <a href="/about" target="_blank"><h2>About Us</h2></a>
-        <p>Welcome to Art Haven - a contemporary art gallery that showcases innovative artwork from both emerging and established artists. We believe art is a powerful catalyst for dialogue, introspection, and change, and our mission is to foster a deeper connection between art and its audience.</p>
-    </section>
 
-    <!-- Gallery Highlights -->
+<!-- Gallery Highlights -->
 <section class="gallery-highlights">
     <h2>Featured Artworks</h2>
     <div class="gallery-grid">
@@ -554,13 +531,15 @@
     {% endfor %}
 </div>
 </section>
+{% endblock %}
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2024 Art Gallery. All rights reserved.</p>
-        <div class="social-media">
-            <a href="#">Facebook</a> | <a href="#">Instagram</a> | <a href="#">Twitter</a>
-        </div>
-    </footer>
-</body>
-</html>
+{% block section3 %}
+<footer class="footer">
+    <p>&copy; 2024 Art Gallery. All rights reserved.</p>
+    <div class="social-media">
+        <a href="#" class="social-link">Facebook</a> | 
+        <a href="#" class="social-link">Instagram</a> | 
+        <a href="#" class="social-link">Twitter</a>
+    </div>
+</footer>
+{% endblock %}

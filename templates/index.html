@@ -4,9 +4,127 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="/static/style.css">
-    <!-- Customized Bootstrap Stylesheet -->
-    <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <title>Home Page</title>
+    <style>
+        /* Header styling */
+        header {
+            display: flex; 
+            justify-content: space-between; /* Space between left, center, and right */
+            align-items: center; /* Vertically center all elements */
+            padding: 10px 20px;
+            background-color: #333;
+        }
+    
+        /* Logo styling (left aligned) */
+        .logo {
+            width: 100px; /* Set the logo size */
+            height: auto;
+        }
+    
+        /* Navigation styling (center aligned) */
+        nav {
+            flex-grow: 1; /* Allow nav to take up available space */
+            text-align: center;
+        }
+    
+        nav ul {
+            display: flex;
+            justify-content: center; /* Center the links horizontally */
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+    
+        nav ul li {
+            margin: 0 15px; /* Space between links */
+        }
+    
+        nav ul li a {
+            text-decoration: none;
+            color: white; /* Link color */
+            font-size: 16px;
+            font-weight: bold;
+        }
+    
+        nav ul li a:hover {
+            color: #4CAF50; /* Hover color */
+        }
+    
+        /* Right-side container (for user greeting and cart) */
+        .right-side {
+            display: flex;
+            align-items: center;
+            gap: 20px; /* Adds space between user greeting and cart icon */
+        }
+    
+        /* Cart icon styling */
+        .icon-cart {
+            margin-left: 20px;
+            position: relative;
+        }
+    
+        .icon-cart a {
+            color: white;
+            font-size: 24px;
+            text-decoration: none;
+        }
+    
+        /* Dropdown button styling */
+        .cta-button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+    
+        .cta-button i {
+            margin-left: 8px; /* Space between name and caret icon */
+        }
+    
+        /* Dropdown content (Logout link) */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+    
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #333;
+            min-width: 160px;
+            z-index: 1;
+            border-radius: 4px;
+            top: 100%;
+            left: 0;
+        }
+    
+        .dropdown-content a {
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            display: block;
+        }
+    
+        .dropdown-content a:hover {
+            background-color: #4CAF50;
+        }
+    
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+    
+        
+    </style>
+    
+    
 </head>
 <body>
     <div class="container">
@@ -19,60 +137,83 @@
                     <li><a href="/events">Events</a></li>
                     <li><a href="/artwork">Artworks</a></li>
                     <li><a href="/contact">Contact Us</a></li>
-                    {% if 'email' in session %}
-                    <li><a href="/logout">Logout</a></li>
-                    {% endif %}
                 </ul>
             </nav>
+          
+            {% if 'user_name' in session %}
+            <!-- Dropdown for logged-in users (Welcome Button + Logout Option) -->
+            <div class="dropdown">
+                <button class="cta-button">Hello, {{ session['user_name'] }} <i class="fa fa-caret-down"></i></button>
+                <div class="dropdown-content">
+                    <a href="/logout">Logout</a> <!-- Only one logout here -->
+                </div>
+            </div>
+            {% else %}
+            <!-- Login button for users not logged in -->
             <a class="cta" href="/login"><button>Login</button></a>
+            {% endif %}
+            {% if 'user_name' in session %}
+            <div class="icon-cart">
+                <a href="/cart"><i class="fa-solid fa-cart-shopping" style="color: white; width: 200px;" ></i> </a>
+            </div>
+            {% endif %}
+
         </header>
+        
         <div class="section1">
-            {% block section1 %}
-            {% endblock %}
+            {% block section1 %} {% endblock %}
         </div>
         <div class="section2">
-            {% block section2 %}
-            {% endblock %}
+            {% block section2 %} {% endblock %}
         </div>
         <div class="section4">
-            {% block section4 %}
-            {% endblock %}
+            {% block section4 %} {% endblock %}
         </div>
         <div class="section5">
-            {% block section5 %}
-            {% endblock %}
+            {% block section5 %} {% endblock %}
         </div>
         <div class="section6">
-            {% block section6 %}
-            {% endblock %}
+            {% block section6 %} {% endblock %}
         </div>
         <div class="section7">
-            {% block section7 %}
-            {% endblock %}
+            {% block section7 %} {% endblock %}
         </div>
         <div class="section8">
-            {% block section8 %}
-            {% endblock %}
+            {% block section8 %} {% endblock %}
         </div>
         <div class="section9">
-            {% block section9 %}
-            {% endblock %}
+            {% block section9 %} {% endblock %}
         </div>
         <div class="section10">
-            {% block section10 %}
+            {% block section10 %} {% endblock %}
+        </div>
+        <div class="section11">
+            {% block section11 %}
             {% endblock %}
         </div>
 
-        <div class="section3">
-            {% block section3 %}
+        <div class="section11">
+            {% block section11 %}
             {% endblock %}
         </div>
-
+        <div class="section12">
+            {% block section12 %}
+            {% endblock %}
+        </div>
+        <div class="section13">
+            {% block section13 %}
+            {% endblock %}
+        </div>
+        <div class="section14">
+            {% block section14 %}
+            {% endblock %}
+        </div>
         <div class="sectioncheckout">
-            {% block sectioncheckout %}
-            {% endblock %}
+            {% block sectioncheckout %} {% endblock %}
+        </div>
+        <div class="section3">
+            {% block section3 %} {% endblock %}
         </div>
     </div>
-    
 </body>
 </html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+{% extends "index.html" %}
+
+{% block section4 %}
+<div class="registration-container">
+    <h2 class="page-title">Create an Account</h2>
+    <p>Join Art Haven to stay connected with our latest exhibitions, workshops, and artist updates!</p>
+
+    <form class="registration-form" action="/reg_confirm" method="POST">
+        <label for="fname">First Name</label>
+        <input type="text" id="fname" name="fname" required placeholder="Enter your first name">
+
+        <label for="lname">Last Name</label>
+        <input type="text" id="lname" name="lname" placeholder="Enter your last name">
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required placeholder="sample@gmail.com">
+
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required placeholder="Enter your password">
+
+        <label for="cpassword">Confirm Password</label>
+        <input type="password" id="cpassword" name="cpassword" required placeholder="Confirm your password">
+
+         <!-- Show Password Toggle -->
+        <div>
+            <label for="show-password-toggle">Show Passwords</label><input type="checkbox" id="show-password-toggle">
+        </div>
+
+        <label for="pno">Phone Number</label>
+        <input type="number" id="pno" name="pno" placeholder="9812345670" required>
+
+        <label for="address">Address</label>
+        <textarea cols="6" rows="3" id="address" name="address" required></textarea>
+
+        <button type="submit" class="submit-btn">Register</button>
+    </form>
+</div>
+<script>
+     // Add show password functionality
+     document.getElementById('show-password-toggle').addEventListener('change', function () {
+        passwordField = document.getElementById('password');
+        confirmPasswordField = document.getElementById('cpassword');
+        type = this.checked ? 'text' : 'password';
+        passwordField.type = type;
+        confirmPasswordField.type = type;
+    });
+
+    document.querySelector('.registration-form').addEventListener('submit', function(event) //Selects the form element with the class registration-form
+    {
+        // Prevent the form from submitting until validation passes
+        event.preventDefault();
+
+        // Get form values
+        fname = document.getElementById('fname').value.trim();
+        lname = document.getElementById('lname').value.trim();
+        email = document.getElementById('email').value.trim();
+        password = document.getElementById('password').value;
+        cpassword = document.getElementById('cpassword').value;
+        phone = document.getElementById('pno').value;
+
+        // Validate first and last names (alphabets only)
+        nameRegex = /^[A-Za-z]+$/;
+        if (!nameRegex.test(fname)) {
+            alert('First name should only contain alphabets!');
+            return;
+        }
+
+        if (!nameRegex.test(lname)) {
+            alert('Last name should only contain alphabets!');
+            return;
+        }
+
+        // Validate email format
+        emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            alert('Please enter a valid email address!');
+            return;
+        }
+
+        // Validate password
+        if (password.length < 8) {
+            alert('Password must be at least 8 characters long!');
+            return;
+        }
+
+        passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/;
+        if (!passwordRegex.test(password)) {
+            alert('Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character!');
+            return;
+        }
+
+        // Validate confirm password
+        if (password !== cpassword) {
+            alert('Passwords do not match.');
+            return;
+        }
+
+        // Validate phone number
+        phoneRegex = /^\d{10}$/;
+        if (!phoneRegex.test(phone)) {
+            alert('Phone number must consist of 10 digits!');
+            return;
+        }
+
+        // If all validations pass, submit the form
+        alert('Registration successful!');
+        this.submit();
+    });
+</script>
+{% endblock %}
+
+{% block section3 %}
+    <footer class="footer">
+        <p>&copy; 2024 Art Gallery. All rights reserved.</p>
+        <div class="social-media">
+            <a href="#" class="social-link">Facebook</a> | 
+            <a href="#" class="social-link">Instagram</a> | 
+            <a href="#" class="social-link">Twitter</a>
+        </div>
+    </footer>
+{% endblock %}
+<br><br>

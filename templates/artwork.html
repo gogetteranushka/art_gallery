@@ -2,11 +2,69 @@
 {% extends "index.html" %}
 
 {% block section1 %}
-<style>
-    
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+<style> 
+
+    .flash {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 25px;
+        margin: 15px auto;
+        border-radius: 8px;
+        font-size: 16px;
+        max-width: 600px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        animation: fadeIn 0.5s ease-out;
+        position: relative;
+        font-family: 'Arial', sans-serif;
+        background-color: #d4edda;
+        color: #155724;
+        border-left: 5px solid #28a745;
+    }
+
+    .flash-icon {
+        font-size: 24px;
+        margin-right: 15px;
+    }
+
+    .flash-text {
+        flex-grow: 1;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+    .close-btn {
+        background: none;
+        border: none;
+        font-size: 20px;
+        color: #155724;
+        font-weight: bold;
+        cursor: pointer;
+        margin-left: 15px;
+    }
+
+    .close-btn:hover {
+        color: #721c24;
+    }
+
 </style>
+<script>
+    function closeFlash(button) {
+        var flashMessage = button.parentElement;
+        flashMessage.style.display = 'none';
+    }
+</script>
+
 <div class="filter">
-    <h3> Filter </h3>
+    <!-- <h3> Filter </h3> -->
     <form class="filter-form" method="GET" action="/filter_artwork">
         <div class="by-category">
             <label for="category-filter">Filter by Category:</label>
@@ -17,18 +75,21 @@
                 <option value="Landscape">Landscape</option>
                 <option value="Sketches">Sketching</option>
                 <option value="Pottery">Pottery</option>
-            </select>
-        </div>
-        
-        <div class="by-artist">
-            <label><strong>Filter by Artist:</strong></label>
-            <label><input type="checkbox" name="artist" value="Jean Court"> Jean Court</label>
-            <label><input type="checkbox" name="artist" value="Jim Hopper"> Jim Hopper</label>
-            <label><input type="checkbox" name="artist" value="Joey Brandon"> Joey Brandon</label>
-            <br><input type="submit" value="Filter">
+            </select><br><br>
+            <input type="submit" value="Filter">
         </div>
     </form>  
 </div>
+
+{% for message in get_flashed_messages() %}
+    <div class="flash">
+        <div class="flash-icon">
+            <i class="fas fa-check-circle"></i>
+        </div>
+        <div class="flash-text">{{ message }}</div>
+        <button class="close-btn" onclick="closeFlash(this)">×</button>
+    </div>
+{% endfor %}
 
 <!-- Flex container for the product images -->
 <div class="artworks-container">
@@ -36,7 +97,8 @@
     <div class="artworks-card">
         <img src="{{ res[3] }}" alt="Artwork">
         <div class="artworks-details">
-            <a href="{{url_for('products', product_id=res[0])}}" class="btn">See more</a>
+            <a href="{{url_for('products', product_id=res[0])}}" class="btn">{{ res[2] }}</a>
+            <a href="{{url_for('products', product_id=res[0])}}" class="btn">{{ res[2] }}</a>
         </div>
     </div>
     {% endfor %}

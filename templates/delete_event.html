@@ -1,22 +1,47 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    {% extends "add_event.html" %}
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Delete Event</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-</head>
+{% extends "admin_dashboard.html" %}
+
+<title>Delete Event</title>
+
+{% block style %}
+<style>
+    body { background-color: #f4f7f6; font-family: 'Arial', sans-serif; }
+    h1 { text-align: center; margin: 40px 0; }
+    table { width: 80%; margin: auto; border-collapse: collapse; }
+    th, td { padding: 12px; border-bottom: 1px solid #ddd; text-align: left; }
+    th { background: #c62828; color: white; }
+    tr:hover { background: #f1f1f1; }
+    form { margin: 30px auto; max-width: 400px; padding: 20px; background: #fff; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); }
+    label { display: block; margin-bottom: 10px; font-weight: bold; }
+    input[type="text"] { width: 100%; padding: 10px; margin-bottom: 15px; }
+    input[type="submit"] { width: 100%; background: #c62828; color: #fff; border: none; padding: 10px; cursor: pointer; }
+    input[type="submit"]:hover { background: #b71c1c; }
+</style>
+{% endblock %}
+
 <body>
     {% block adminoperations %}
-    <div class="container">
-        <h1>Delete Event</h1>
-        <form action="/deleting_event" method="POST">
-            <label for="event_id">Event ID:</label>
-            <input type="text" name="event_id" placeholder="Enter Event ID" required><br><br>
-            <input type="submit" class="btn btn-danger" value="Delete Event">
-        </form>
+    <h1>Existing Events</h1>
+    <table>
+        <tr>
+            <th>Event ID</th>
+            <th>Event Name</th>
+            <th>Date</th>
+        </tr>
+        {% for res in res %}
+        <tr>
+            <td>{{ res[0] }}</td>
+            <td>{{ res[1] }}</td>
+            <td>{{ res[2] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h1>Delete Event</h1>
+    <form method="POST" action="/deleting_event">
+        <label for="event_id">Event ID to Delete</label>
+        <input type="text" id="event_id" name="event_id" required>
+        <input type="submit" value="Delete Event">
+    </form>
     {% endblock %}
-    </div>
 </body>
-</html>

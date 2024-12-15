@@ -1,170 +1,154 @@
 <!DOCTYPE html>
 {% extends "index.html" %}
 
-{% block section1 %}
+{% block section9 %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
 <style>
-    /* Container for the cart page */
+    /* Container for the table */
     .cart-container {
-        width: 80%;
-        margin: 50px auto;
+        width: 60%; /* Reduced width to make it less wide */
+        margin: 30px auto;
+        padding: 20px;
         background-color: #f9f9f9;
-        padding: 30px;
-        border-radius: 8px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     }
 
-    /* Header styling */
-    .cart-container h3 {
-        font-family: 'Montserrat', serif;
-        text-align: center;
-        font-size: 28px;
-        margin-bottom: 20px;
-        color: #333;
-        font-weight: bold;
-    }
-
-    /* Table styling for cart items */
-    .cart-info {
-        margin: 20px 0;
-        padding: 15px;
-        background-color: #ffffff;
-        border-radius: 8px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    }
-
+    /* Table styling */
     table {
         width: 100%;
         border-collapse: collapse;
-    }
-
-    table td, table th {
-        padding: 15px;
-        text-align: left;
-        font-size: 16px;
-        border-bottom: 1px solid #ddd;
-    }
-
-    table th {
-        background-color: #008CBA;
-        color: white;
-        font-weight: bold;
-    }
-
-    /* Styling for the product details */
-    .product-info {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
         margin-top: 20px;
     }
 
-    .product-info img {
-        width: 150px;
-        height: auto;
-        border-radius: 8px;
-        margin-right: 20px;
+    table th, table td {
+        /* padding: 15px; */
+        padding: 10px 15px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
     }
 
-    .product-details {
-        flex-grow: 1;
-    }
-
-    .product-details h4 {
-        font-size: 22px;
-        font-weight: bold;
-        margin-bottom: 10px;
-    }
-
-    .product-details p {
-        font-size: 16px;
-        color: #555;
-    }
-
-    /* Buy now button styling */
-    .buy-now-btn {
-        display: block;
-        width: 100%;
-        background-color: #008CBA;
+    /* Table header styling */
+    table th {
+        background-color: #28a745;
         color: white;
-        padding: 15px;
+        font-weight: bold;
+    }
+
+
+    /* Image styling */
+    td img {
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+        border-radius: 5px;
+    }
+
+    /* Styling for product names and prices */
+    td {
+        font-size: 16px;
+    }
+
+    /* Price column */
+    .price-column {
+        color: #28a745;
+        font-weight: bold;
+    }
+
+    /* Total row styling */
+    .total-row {
+        font-size: 18px;
+        font-weight: bold;
+        background-color: #d4edda;
+        text-align: right;
+    }
+
+    /* Cart action buttons */
+    .cart-actions {
+        margin-top: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .cart-actions button {
+        padding: 10px 20px;
+        font-size: 16px;
+        background-color: #28a745;
         border: none;
         border-radius: 5px;
-        font-size: 18px;
-        text-align: center;
         cursor: pointer;
-        margin-top: 30px;
         transition: background-color 0.3s ease;
     }
+    .cart-actions button a{
+        color: white;
+        text-decoration: none;
+    }
 
-    .buy-now-btn:hover {
-        background-color: #005f75;
+    .cart-actions button:hover {
+        background-color: #218838;
+    }
+    .empty-cart-message {
+        text-align: center;
+        font-size: 18px;
+        font-weight: bold;
+        color: #d9534f;
+        margin-top: 20px;
     }
 </style>
-<script>
-    // alert("Inside")
-    // function confirmation(){
-    //     window.confirm("Are you sure you would like to proceed? Your details will be stored in our database to process the order. If yes, click OK.");  
-        
-    //     }
-
-    function confirmation(event) {
-        var result = confirm("Are you sure you would like to proceed? Your details will be stored in our database to process the order. If yes, click OK.");
-        
-        if (result) {
-            document.getElementById("checkoutForm").submit();  
-        } else {
-            event.preventDefault();
-        }
-    }
-</script>
 
 <div class="cart-container">
-    <h3>Your Cart</h3>
+    {% if res %}
+    <h2>Your Shopping Cart</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Image</th>
+                <th>Product Name</th>
+                <th>Price</th>
+                <th>Remove Item</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for res in res %}
+            <tr>
+                <td><img src="/{{ res[0] }}" alt="{{ res[1] }}"></td>
+                <td>{{ res[1] }}</td>
+                <td class="price-column">₹{{ res[2] }}</td>
+                <td>
+                    <form method="POST" action="/remove_from_cart">
+                        <input type="hidden" name="product_id" value="{{ res[3] }}">
+                        <input type="hidden" name="cart_id" value="{{ res[4] }}"> 
+                        <input type="submit" value="Remove">
+                    </form>
+                </td>
+            </tr>
+
+            {% endfor %}
+            <!-- Total row -->
+            <tr class="total-row">
+                <td colspan="3">Total</td>
+                <td class="price-column">₹{{ total }}</td>
+            </tr>
+        </tbody>
+    </table>
     
-    <!-- Product details section -->
-    <div class="product-info">
-        <img src="{{ res[3] }}" alt="Product Image"> <!-- Product Image -->
-        <div class="product-details">
-            <h4>{{ res[2] }}</h4> <!-- Product Name -->
-            <p><strong>Price:</strong> ₹{{ res[7] }}</p> <!-- Product Price -->
-            <p><strong>Category:</strong> {{ res[1] }}</p> <!-- Product Category -->
+
+    <!-- Cart action buttons (Continue shopping / Checkout) -->
+    <div class="cart-actions">
+        <button><a href="/artwork"> Continue Shopping</a></button>
+        <button><a href="/order_confirmation">Proceed to Checkout</a></button>
+    </div>
+    {% else %}
+    <div class="empty-cart-message">
+        Your Cart is Empty
+        <div class="cart-actions" style="justify-content: center;">
+            <button><a href="/artwork" style="justify-content: center;"> Continue Shopping</a></button>
         </div>
     </div>
-        <!-- Table to show product name and price -->
-        <form action="/checkout" method="POST">
-            <input type="hidden" name="product_id" value="{{ res[0] }}">
-            <input type="hidden" name="product_name" value="{{ res[2] }}">
-            <input type="hidden" name="price" value="{{ res[7] }}">
-            <div class="cart-info">
-                <table>
-                    <tr>
-                        <th>Product Name</th>
-                        <th>Price</th>
-                    </tr>
-                    <tr>
-                        <td>{{ res[2] }}</td>
-                        <td>₹{{ res[7] }}</td>
-                    </tr>
-                </table>
-            </div>
-            
-        <!-- Buy Now button -->
-            <!-- <button class="buy-now-btn" onclick="window.location.href='/checkout'">Buy Now</button> -->
-            <input type="submit" class="buy-now-btn" value="Buy Now" id="buynow" onclick="confirmation(event);">
-        </form>
-    </div>
-    
-    
+{% endif %}
+</div>
 
-{% endblock %}
-
-{% block section3 %}
-  <footer class="footer">
-      <p>&copy; 2024 Art Gallery. All rights reserved.</p>
-      <div class="social-media">
-          <a href="#" class="social-link">Facebook</a> | 
-          <a href="#" class="social-link">Instagram</a> | 
-          <a href="#" class="social-link">Twitter</a>
-      </div>
-  </footer>
 {% endblock %}

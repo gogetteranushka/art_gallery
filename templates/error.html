@@ -1,5 +1,8 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"></html>
+{% extends "admin_dashboard.html" %}
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -37,7 +40,8 @@
     <div class="container">
         <h1>Something went wrong!</h1>
         <p>{{ message }}</p>
-        <p><a href="/">Go back to the homepage</a></p>
+        <p><a href="/admin_dashboard">Go back to the admin dashboard</a></p>
     </div>
 </body>
 </html>
+

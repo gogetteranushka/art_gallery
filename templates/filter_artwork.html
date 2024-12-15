@@ -20,7 +20,7 @@
     <div class="artworks-card">
         <img src="{{ res[3] }}" class="product_image" alt="Product Image">
         <div class="artworks-details">
-            <a href="{{url_for('products', product_id=res[0])}}" class="btn">See more</a>
+            <a href="{{url_for('products', product_id=res[0])}}" class="btn">{{ res[2] }}</a>
         </div>
     </div>
     {% endfor %}

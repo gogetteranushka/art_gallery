@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+{% extends "index.html" %}
+
+{% block section11 %}
+<style>
+    .flash {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 25px;
+        margin: 15px auto;
+        border-radius: 8px;
+        font-size: 16px;
+        max-width: 600px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        animation: fadeIn 0.5s ease-out;
+        position: relative;
+        font-family: 'Arial', sans-serif;
+        background-color: #d4edda;
+        color: #155724;
+        border-left: 5px solid #28a745;
+    }
+
+    .flash-icon {
+        font-size: 24px;
+        margin-right: 15px;
+    }
+
+    .flash-text {
+        flex-grow: 1;
+    }
+
+
+    .close-btn {
+        background: none;
+        border: none;
+        font-size: 20px;
+        color: #155724;
+        font-weight: bold;
+        cursor: pointer;
+        margin-left: 15px;
+    }
+
+    .close-btn:hover {
+        color: #721c24;
+    }
+
+</style>
+<script>
+    function closeFlash(button) {
+        var flashMessage = button.parentElement;
+        flashMessage.style.display = 'none';
+    }
+</script>
+{% for message in get_flashed_messages() %}
+    <div class="flash">
+        <div class="flash-icon">
+            <i class="fas fa-check-circle"></i>
+        </div>
+        <div class="flash-text">{{ message }}</div>
+        <button class="close-btn" onclick="closeFlash(this)">×</button>
+    </div>
+    {% endfor %}
+<h2>Please confirm the following details to proceed with your order:</h2>
+<b>Customer ID</b>: {{ results1[0] }} <br><br>
+<b>Customer Name</b>: {{ results1[1] }}<br><br>
+<b>Customer Phone</b>: {{ results3[0] }}<br><br>
+<b>Customer Email</b>: {{ results3[1] }}<br><br>
+<b>Customer Address</b>: {{ results3[2] }}</textarea><br><br>
+<form method="POST" action="/update_address">
+    <textarea name="new_address" rows="2" cols="25" placeholder="Enter new address"></textarea><br><br>
+    <input type="hidden" name="customer_id" value="{{ results1[0] }}">
+    <input type="submit" value="Save New Address">
+</form>
+<table border="1">
+    <tr>
+        <td>Product ID</td>
+        <td>Product Name</td>
+        <td>Product Cost</td>
+    </tr>
+    {% for i in results2  %}
+    <tr>
+        <td>{{ i[0] }}</td>
+        <td>{{ i[1] }}</td>
+        <td>{{ i[2] }}</td>
+    </tr>
+    {% endfor %}
+</table><br>
+<b>Order Total</b>: {{ results4[0] }} <br><br>
+<a href="/checkout"><input type="button" value="Proceed to Checkout"></input></a><br><br>
+{% endblock %}
+
+{% block section3 %}
+<footer class="footer">
+    <p>&copy; 2024 Art Gallery. All rights reserved.</p>
+    <div class="social-media">
+        <a href="#" class="social-link">Facebook</a> | 
+        <a href="#" class="social-link">Instagram</a> | 
+        <a href="#" class="social-link">Twitter</a>
+    </div>
+</footer>
+{% endblock %}

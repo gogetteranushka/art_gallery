@@ -1,26 +1,140 @@
 <!DOCTYPE html>
-{% extends "add_event.html" %}
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modify Artist</title>
-</head>
+{% extends "admin_dashboard.html" %}
+
+<title>Modify Artist</title>
+
+{% block style %}
+<style>
+    body {
+        font-family: 'Arial', sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f7f6;
+    }
+
+    h1 {
+        text-align: center;
+        color: #333;
+        margin-top: 40px;
+        font-size: 30px;
+        font-weight: 600;
+    }
+
+    table {
+        width: 80%;
+        margin: 20px auto;
+        border-collapse: collapse;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    table th, table td {
+        padding: 12px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+
+    table th {
+        background-color: #6a1b9a;
+        color: white;
+        font-size: 16px;
+    }
+
+    table tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+
+    table tr:hover {
+        background-color: #f1f1f1;
+    }
+
+    form {
+        max-width: 600px;
+        margin: 40px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    label {
+        display: block;
+        margin-bottom: 10px;
+        font-weight: bold;
+        color: #555;
+        font-size: 16px;
+    }
+
+    input[type="text"], input[type="file"], textarea {
+        width: 100%;
+        padding: 12px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        font-size: 16px;
+        box-sizing: border-box;
+    }
+
+    input[type="submit"] {
+        display: block;
+        width: 100%;
+        padding: 12px;
+        background-color: #6a1b9a;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        font-size: 18px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #4a148c;
+    }
+</style>
+{% endblock %}
+
 <body>
     {% block adminoperations %}
+    <h1>Existing Artists:</h1>
+    <table>
+        <tr>
+            <th>Artist ID</th>
+            <th>Artist Name</th>
+            <th>Hails From</th>
+            <th>Description</th>
+            <th>Image URL</th>
+        </tr>
+        {% for res in res %}
+        <tr>
+            <td>{{ res[0] }}</td>
+            <td>{{ res[1] }}</td>
+            <td>{{ res[2] }}</td>
+            <td>{{ res[3] }}</td>
+            <td>{{ res[4] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
     <h1>Modify Artist</h1>
-    <form action="/modifying_artist" method="POST">
-        <label for="artist_id">Artist ID:</label>
-        <input type="text" name="artist_id" required><br><br>
-        
-        <label for="artist_name">Artist Name:</label>
-        <input type="text" name="artist_name" required><br><br>
-        
-        <label for="artist_bio">Artist Biography:</label>
-        <textarea name="artist_bio" rows="4" cols="50"></textarea><br><br>
-        
+    <form method="POST" action="/modifying_artist" enctype="multipart/form-data">
+        <label for="artist_id">Artist ID (to Modify)</label>
+        <input type="text" id="artist_id" name="artist_id" required>
+
+        <label for="artist_name">New Artist Name</label>
+        <input type="text" id="artist_name" name="artist_name">
+
+        <label for="hails_from">New Hails From</label>
+        <input type="text" id="hails_from" name="hails_from">
+
+        <label for="description">New Description</label>
+        <textarea id="description" name="description" rows="4"></textarea>
+
+        <label for="artist_img">New Artist Image</label>
+        <input type="file" name="artist_img">
+
         <input type="submit" value="Modify Artist">
     </form>
     {% endblock %}
 </body>
-</html>
